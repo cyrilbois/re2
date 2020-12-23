@@ -624,7 +624,9 @@ bool RE2::Match(const StringPiece& text,
       LOG(ERROR) << "Invalid RE2: " << *error_;
     return false;
   }
-
+ 
+  std::cout << text; 
+   
   if (startpos > endpos || endpos > text.size()) {
     if (options_.log_errors())
       LOG(ERROR) << "RE2: invalid startpos, endpos pair. ["
@@ -638,6 +640,8 @@ bool RE2::Match(const StringPiece& text,
   subtext.remove_prefix(startpos);
   subtext.remove_suffix(text.size() - endpos);
 
+    std::cout << subtext;
+  
   // Use DFAs to find exact location of match, filter out non-matches.
 
   // Don't ask for the location if we won't use it.
